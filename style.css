@@ -1,0 +1,24 @@
+html,body {padding:0;margin:0;}
+form {
+    font-family: Arial, sans-serif;
+}
+.question {
+    margin-bottom: 20px;
+}
+.question-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; 
+}
+label input[type="radio"] {
+    margin-right: 0px; 
+}
+button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0059ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
