@@ -9,6 +9,7 @@ include 'includes/header.php'; ?>
         include ('connect_to_db.php');
         $result = mysqli_query($conn, "SHOW COLUMNS FROM results");
 
+
         $columnNames = array();
         while ($row = $result->fetch_assoc()) {
             if ($row['Field'] != 'id' && $row['Field'] != 'peergroup') {
