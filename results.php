@@ -5,7 +5,7 @@ include 'includes/header.php'; ?>
     <section>
         <h2>Results</h2>
         <?php
-        include ('connect_to_db.php');
+        include ('connect_to_loc_db.php');
         $result = mysqli_query($conn, "select * from results where id = '5'");
 
         echo "<table>";
