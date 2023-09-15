@@ -34,3 +34,7 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+canvas {
+    object-fit: contain;
+}
