@@ -10,12 +10,12 @@ Follow these steps to set up and run a local web server on your computer using D
 1. Create a directory that will serve as the parent directory for the 'HAMK-Edu' folder. Your directory structure should look like this:
 
 your_directory
-├── Hamk-Edu
+── Hamk-Edu
 
-2. Copy the files from the following repository into the newly created 'HAMK-Edu' folder:
+2. Copy the files from the following repository into the newly created folder:
 - [Repository Link](https://github.com/gibanator/files-for-local-server)
 
-3. To start the web server, run the following command from within the 'HAMK-Edu' folder:
+3. To start the web server, run the following command from within the created folder:
 
 ```bash
 docker-compose up -d
