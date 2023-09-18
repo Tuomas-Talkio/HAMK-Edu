@@ -19,9 +19,12 @@ your_directory
 
 ```bash
 docker-compose up -d
+```
 
 4. To access the `index.php` page, open your web browser and enter the following URL:
    - [http://localhost:81](http://localhost:81)
 
 5. To access phpMyAdmin, open your web browser and enter the following URL:
    - [http://localhost:82](http://localhost:82)	
+   	(username: root
+	 password: password)
