@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,3 +21,4 @@
         <li><a href="#">Contact</a></li>
     </ul>
 </nav>
+

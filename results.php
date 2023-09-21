@@ -2,11 +2,25 @@
 include 'includes/header.php'; ?>
 
 <main>
+    <?php
+    //retrieve answers from session variable
+    if (isset($_SESSION['survey_responses'])) {
+        $surveyResponses = $_SESSION['survey_responses'];
+
+        echo "Response to Question 1: " . $surveyResponses['q1'] . "<br>";
+        echo "Response to Question 2: " . $surveyResponses['q2'] . "<br>";
+        echo "Response to Question 3: " . $surveyResponses['q3'] . "<br>";
+
+    } else {
+        echo "No survey responses found.";
+    }
+    ?>
+
     <script src="speedometer.js"></script>
     <section>
         <h2>Results</h2>
         <?php
-        include ('connect_to_db.php');
+        include ('connect_to_loc_db.php');
         $result = mysqli_query($conn, "SHOW COLUMNS FROM results");
 
 
