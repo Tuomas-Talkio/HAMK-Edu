@@ -15,8 +15,11 @@ nav ul {
 
 nav li {
     display: inline;
-    margin-right: 20px;
     color: white;
+}
+
+nav li:not(:last-child) {
+    margin-right: 20px;
 }
 
 nav a{
@@ -33,6 +36,22 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
+}
+.footer-links{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.footer-links a{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.footer-links i{
+    font-size: 40px;
+}
+
+.footer-links a:not(:last-child)  {
+    margin-right: 50px;
 }
 
 canvas {
