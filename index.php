@@ -15,10 +15,10 @@ LIMIT 5;
 ?>
 
 <body>
-    <form id="Survey">
+    <form id="Survey" action="process_survey.php" method="post">
         <h2>Group1213 Survey</h2>
         <div id="Surveyquestions"></div>
-        <button type="submit">Submit</button>
+        <button  id="submitButton" type="submit" name = "submit">Submit</button>
     </form>
 
     <script>
@@ -63,6 +63,7 @@ LIMIT 5;
 
             Surveyquestions.appendChild(questionDiv);
         });
+
     </script>
 </body>
 
