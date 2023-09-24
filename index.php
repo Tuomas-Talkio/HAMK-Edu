@@ -5,13 +5,20 @@ include 'includes/header.php';
 include ('connect_to_loc_db.php');
 
 // Query to get 5 random questions
-$query = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
-$result = mysqli_query($conn, $query);
+$query1 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
+$query2 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LE%' OR ID LIKE 'PR%' ORDER BY RAND() LIMIT 5;";
+$query3 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
+$query4 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'IN%' OR ID LIKE 'DS%' OR ID LIKE 'CO%' OR ID LIKE 'SD%' OR ID LIKE 'EN%' OR ID LIKE 'CP%' OR ID LIKE 'CD%' ORDER BY RAND() LIMIT 5;";
+$process = mysqli_query($conn, $query1);
+$environemnt = mysqli_query($conn, $query2);
+$skills = mysqli_query($conn, $query3);
+$wellbeing = mysqli_query($conn, $query4);
 
-// Check if query was successful
-if ($result) {
-    $questions = array();
-    while ($row = mysqli_fetch_assoc($result)) {
+
+$questions = array();
+
+if ($process) {
+    while ($row = mysqli_fetch_assoc($process)) {
         $question = array(
             'surveyStatement' => $row['Statement'],
             'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
@@ -23,6 +30,49 @@ if ($result) {
 } else {
     echo "Error: " . mysqli_error($conn);
 }
+
+if ($environemnt) {
+    while ($row = mysqli_fetch_assoc($environemnt)) {
+        $question = array(
+            'surveyStatement' => $row['Statement'],
+            'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
+            'name' => 'q' . $row['ID'],
+            'best' => $row['Best']
+        );
+        array_push($questions, $question);
+    }
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
+if ($skills) {
+    while ($row = mysqli_fetch_assoc($skills)) {
+        $question = array(
+            'surveyStatement' => $row['Statement'],
+            'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
+            'name' => 'q' . $row['ID'],
+            'best' => $row['Best']
+        );
+        array_push($questions, $question);
+    }
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
+if ($wellbeing) {
+    while ($row = mysqli_fetch_assoc($wellbeing)) {
+        $question = array(
+            'surveyStatement' => $row['Statement'],
+            'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
+            'name' => $row['ID'],
+            'best' => $row['Best']
+        );
+        array_push($questions, $question);
+    }
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
 
 mysqli_close($conn);
 ?>
