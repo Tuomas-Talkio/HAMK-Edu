@@ -22,7 +22,7 @@ if ($process) {
         $question = array(
             'surveyStatement' => $row['Statement'],
             'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
-            'name' => 'q' . $row['ID'],
+            'name' => $row['ID'],
             'best' => $row['Best']
         );
         array_push($questions, $question);
@@ -36,7 +36,7 @@ if ($environemnt) {
         $question = array(
             'surveyStatement' => $row['Statement'],
             'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
-            'name' => 'q' . $row['ID'],
+            'name' => $row['ID'],
             'best' => $row['Best']
         );
         array_push($questions, $question);
@@ -50,7 +50,7 @@ if ($skills) {
         $question = array(
             'surveyStatement' => $row['Statement'],
             'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
-            'name' => 'q' . $row['ID'],
+            'name' => $row['ID'],
             'best' => $row['Best']
         );
         array_push($questions, $question);
@@ -102,9 +102,15 @@ mysqli_close($conn);
             questionDiv.appendChild(questionParagraph);
 
             question.options.forEach((option, optionIndex) => {
+                if(question.best == 5)
+                    { $weight = optionIndex + 1; }
+                else if(question.best == 1)
+                    { $weight = ( (optionIndex - 5) * (-1) ) ;}
+                else
+                    { $weight = 3}
                 const label = document.createElement("label");
                 label.innerHTML = `
-                    <input type="radio" name="${question.name}" value="${(optionIndex + 1)}">
+                    <input type="radio" name="${question.name}" value="${$weight}">
                     ${option}
                 `;
                 questionDiv.appendChild(label);
