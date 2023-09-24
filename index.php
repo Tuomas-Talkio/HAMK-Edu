@@ -1,18 +1,35 @@
 <?php
-include 'includes/header.php'; ?>
+include 'includes/header.php';
+
+// Connect to database
+include ('connect_to_loc_db.php');
+
+// Query to get 5 random questions
+$query = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
+$result = mysqli_query($conn, $query);
+
+// Check if query was successful
+if ($result) {
+    $questions = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $question = array(
+            'surveyStatement' => $row['Statement'],
+            'options' => array('Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'),
+            'name' => 'q' . $row['ID'],
+            'best' => $row['Best']
+        );
+        array_push($questions, $question);
+    }
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <link href="style.css" rel="stylesheet" type="text/css">
-
-<?php
-/* 
-SELECT * FROM learnwellquestions
-WHERE ID LIKE 'LP%'
-ORDER BY RAND()
-LIMIT 5;
-*/
-?>
 
 <body>
     <form id="Survey" action="process_survey.php" method="post">
@@ -22,25 +39,7 @@ LIMIT 5;
     </form>
 
     <script>
-        const questions = [
-            // Learning statements
-            {
-                surveyStatement: "I often have trouble making sense of the things I have to learn.",
-                options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                name: "q1"
-            },
-            {
-                surveyStatement: "I put a lot of effort into my studying.",
-                options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                name: "q2"
-            },
-            {
-                surveyStatement: "Much of what I've learned seems no more than unrelated bits and pieces.",
-                options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-                name: "q3"
-            }
-            
-        ];
+        const questions = <?php echo json_encode($questions); ?>;
 
         const Surveyquestions = document.getElementById("Surveyquestions");
         questions.forEach((question, index) => {
@@ -55,7 +54,7 @@ LIMIT 5;
             question.options.forEach((option, optionIndex) => {
                 const label = document.createElement("label");
                 label.innerHTML = `
-                    <input type="radio" name="${question.name}" value="${optionIndex + 1}">
+                    <input type="radio" name="${question.name}" value="${(optionIndex + 1)}">
                     ${option}
                 `;
                 questionDiv.appendChild(label);
