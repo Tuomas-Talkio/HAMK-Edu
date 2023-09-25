@@ -8,9 +8,10 @@ if (isset($_POST['submit'])) {
 
     //store the responses in a session var
     $_SESSION['survey_responses'] = [
-        'q1' => $q1Response,
-        'q2' => $q2Response,
-        'q3' => $q3Response
+        'avgProcess' => 1,
+        'avgEnvironment' => 2,
+        'avgSkills' => 3,
+        'avgWellbeing' => 4,
     ];
 
     header("Location: results.php");
