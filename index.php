@@ -106,8 +106,6 @@ mysqli_close($conn);
                     { $weight = optionIndex + 1; }
                 else if(question.best == 1)
                     { $weight = ( (optionIndex - 5) * (-1) ) ;}
-                else
-                    { $weight = 3}
                 const label = document.createElement("label");
                 label.innerHTML = `
                     <input type="radio" name="${question.name}" value="${$weight}">
