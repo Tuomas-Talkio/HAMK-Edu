@@ -83,9 +83,9 @@ mysqli_close($conn);
 
 <body>
     <form id="Survey" action="process_survey.php" method="post">
-        <h2>Group1213 Survey</h2>
+        <h2 style="">Group1213 Survey</h2>
         <div id="Surveyquestions"></div>
-        <button  id="submitButton" type="submit" name = "submit">Submit</button>
+        <button id="submitButton" type="submit" name = "submit">Submit</button>
     </form>
 
     <script>
