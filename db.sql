@@ -2289,7 +2289,7 @@ CREATE TABLE `results` (
   `id` int NOT NULL,
   `peergroup` text,
   `process` float NOT NULL,
-  `enviroment` float NOT NULL,
+  `environment` float NOT NULL,
   `skills` float NOT NULL,
   `wellbeing` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -2298,7 +2298,7 @@ CREATE TABLE `results` (
 -- Dumping data for table `results`
 --
 
-INSERT INTO `results` (`id`, `peergroup`, `process`, `enviroment`, `skills`, `wellbeing`) VALUES
+INSERT INTO `results` (`id`, `peergroup`, `process`, `environment`, `skills`, `wellbeing`) VALUES
 (1, NULL, 2, 1, 3, 4),
 (2, NULL, 1, 1, 1, 1),
 (3, NULL, 2, 3, 3, 5),

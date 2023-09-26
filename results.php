@@ -7,10 +7,10 @@ include 'includes/header.php'; ?>
     if (isset($_SESSION['survey_responses'])) {
         $surveyResponses = $_SESSION['survey_responses'];
 
-        echo "Response to Question 1: " . $surveyResponses['q1'] . "<br>";
-        echo "Response to Question 2: " . $surveyResponses['q2'] . "<br>";
-        echo "Response to Question 3: " . $surveyResponses['q3'] . "<br>";
-
+        echo "Group 1 avg: " . $surveyResponses['avgProcess'] . "<br>";
+        echo "Gr 2 avg: " . $surveyResponses['avgEnvironment'] . "<br>";
+        echo "Gr 3 avg: " . $surveyResponses['avgSkills'] . "<br>";
+        echo "Gr 4 avg: " . $surveyResponses['avgWellbeing'] . "<br>";
     } else {
         echo "No survey responses found.";
     }
@@ -50,9 +50,12 @@ include 'includes/header.php'; ?>
             foreach ($averages as $columnName => $sum) {
                 $averages[$columnName] /= $rowCount;
             }
+
             foreach ($averages as $columnName => $averageValue) {
                 echo "<p>$columnName</p>";
-                echo "<canvas id='$columnName' class='speedometer-canvas' data-result='$averageValue' width='300' height='300'></canvas>";
+                $userValueCategory = "avg" . ucfirst($columnName);
+                echo "<p>" . $surveyResponses[$userValueCategory] . "</p>";
+                echo "<canvas id='$columnName' class='speedometer-canvas' data-result='$averageValue' data-user=" . $surveyResponses[$userValueCategory] . " width='300' height='300'></canvas>";
             }
         }
         else {
