@@ -5,9 +5,9 @@ include 'includes/header.php';
 include ('connect_to_loc_db.php');
 
 // Query to get 5 random questions
-$query1 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
-$query2 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LE%' OR ID LIKE 'PR%' ORDER BY RAND() LIMIT 5;";
-$query3 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
+$query1 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' OR ID LIKE 'PR%' ORDER BY RAND() LIMIT 5;";
+$query2 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LE%' ORDER BY RAND() LIMIT 5;";
+$query3 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'WB%' ORDER BY RAND() LIMIT 5;";
 $query4 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'IN%' OR ID LIKE 'DS%' OR ID LIKE 'CO%' OR ID LIKE 'SD%' OR ID LIKE 'EN%' OR ID LIKE 'CP%' OR ID LIKE 'CD%' ORDER BY RAND() LIMIT 5;";
 $process = mysqli_query($conn, $query1);
 $environemnt = mysqli_query($conn, $query2);
@@ -77,48 +77,50 @@ if ($wellbeing) {
 mysqli_close($conn);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<link href="style.css" rel="stylesheet" type="text/css">
 
-<body>
-    <form id="Survey" action="process_survey.php" method="post">
-        <h2 style="">Group1213 Survey</h2>
-        <div id="Surveyquestions"></div>
-        <button id="submitButton" type="submit" name = "submit">Submit</button>
-    </form>
 
-    <script>
-        const questions = <?php echo json_encode($questions); ?>;
+    <div class= 'contents'>
+            <form id="Survey" action="process_survey.php" method="post">
+                <div class= 'container'>
+                    <h1>Questionaire</h1>
+                </div>
+                <div id="Surveyquestions"></div>
+                <div class= 'container'>
+                    <button id="submitButton" type="submit" name = "submit">Submit</button>
+                </div>    
+            </form>
 
-        const Surveyquestions = document.getElementById("Surveyquestions");
-        questions.forEach((question, index) => {
-            const questionDiv = document.createElement("div");
-            questionDiv.classList.add("question");
+            <script>
+                const questions = <?php echo json_encode($questions); ?>;
 
-            const questionParagraph = document.createElement("p");
-            questionParagraph.classList.add("question-text");
-            questionParagraph.textContent = question.surveyStatement;
-            questionDiv.appendChild(questionParagraph);
+                const Surveyquestions = document.getElementById("Surveyquestions");
+                questions.forEach((question, index) => {
+                    const questionDiv = document.createElement("div");
+                    questionDiv.classList.add("question");
 
-            question.options.forEach((option, optionIndex) => {
-                if(question.best == 5)
-                    { $weight = optionIndex + 1; }
-                else if(question.best == 1)
-                    { $weight = ( (optionIndex - 5) * (-1) ) ;}
-                const label = document.createElement("label");
-                label.innerHTML = `
-                    <input type="radio" name="${question.name}" value="${$weight}">
-                    ${option}
-                `;
-                questionDiv.appendChild(label);
-            });
+                    const questionParagraph = document.createElement("p");
+                    questionParagraph.classList.add("question-text");
+                    questionParagraph.textContent = question.surveyStatement;
+                    questionDiv.appendChild(questionParagraph);
 
-            Surveyquestions.appendChild(questionDiv);
-        });
+                    question.options.forEach((option, optionIndex) => {
+                        if(question.best == 5)
+                            { $weight = optionIndex + 1; }
+                        else if(question.best == 1)
+                            { $weight = ( (optionIndex - 5) * (-1) ) ;}
+                        const label = document.createElement("label");
+                        label.innerHTML = `
+                            <input type="radio" name="${question.name}" value="${$weight}">
+                            ${option}
+                        `;
+                        questionDiv.appendChild(label);
+                    });
 
-    </script>
-</body>
+                    Surveyquestions.appendChild(questionDiv);
+                });
 
+
+            </script>
+    </div>    
 
 <?php include 'includes/footer.php'; ?>

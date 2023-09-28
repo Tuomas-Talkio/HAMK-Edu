@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu:wght@300&display=swap');
+
+body{
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7f7 100%);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header{
+    padding: 20px;
+    
+  }
+  .header h1{
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 15px;
+  }
+
+
+
+
+  .contents{
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .question-text{
+    font-size: large;
+  }
+
+  #Surveyquestions{
+    padding: 0 20%;
+  }
+
+  #submitButton{
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    background: #262626;
+    color: #fff;
+    border-radius: 6px;
+
+  }
+
+  .social-icons{
+    margin-top: 30px;
+  }
+  .social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+  }
+  .social-icons a:hover{
+    color:#262626;
+    transform: translateY(-5px);
+  }  
+
+  .container{
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+  }
+
+  footer{
+    margin-top: auto;
+  }
