@@ -5,9 +5,9 @@ include 'includes/header.php';
 include ('connect_to_loc_db.php');
 
 // Query to get 5 random questions
-$query1 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' OR ID LIKE 'PR%' ORDER BY RAND() LIMIT 5;";
-$query2 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LE%' ORDER BY RAND() LIMIT 5;";
-$query3 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'WB%' ORDER BY RAND() LIMIT 5;";
+$query1 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
+$query2 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LE%' OR ID LIKE 'PR%' ORDER BY RAND() LIMIT 5;";
+$query3 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' ORDER BY RAND() LIMIT 5;";
 $query4 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'IN%' OR ID LIKE 'DS%' OR ID LIKE 'CO%' OR ID LIKE 'SD%' OR ID LIKE 'EN%' OR ID LIKE 'CP%' OR ID LIKE 'CD%' ORDER BY RAND() LIMIT 5;";
 $process = mysqli_query($conn, $query1);
 $environemnt = mysqli_query($conn, $query2);
@@ -77,11 +77,6 @@ if ($wellbeing) {
 mysqli_close($conn);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<link href="style.css" rel="stylesheet" type="text/css">
-
-<body>
     <form id="Survey" action="process_survey.php" method="post">
         <h2 style="">Group1213 Survey</h2>
         <div id="Surveyquestions"></div>
@@ -117,9 +112,7 @@ mysqli_close($conn);
             Surveyquestions.appendChild(questionDiv);
         });
 
-
     </script>
-</body>
 
 
 <?php include 'includes/footer.php'; ?>
