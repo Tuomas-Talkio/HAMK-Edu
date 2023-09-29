@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
     // Execute the query
     if (mysqli_query($conn, $query)) {
         // Prepare the query to insert into results table
-        $results_query = "INSERT INTO results (process, enviroment, skills, wellbeing) VALUES ('$avgProcess', '$avgEnvironment', '$avgSkills', '$avgWellbeing')";
+        $results_query = "INSERT INTO results (process, environment, skills, wellbeing) VALUES ('$avgProcess', '$avgEnvironment', '$avgSkills', '$avgWellbeing')";
 
         // Execute the results query
         if (mysqli_query($conn, $results_query)) {
