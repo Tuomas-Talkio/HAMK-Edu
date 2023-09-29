@@ -77,11 +77,6 @@ if ($wellbeing) {
 mysqli_close($conn);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<link href="style.css" rel="stylesheet" type="text/css">
-
-<body>
     <form id="Survey" action="process_survey.php" method="post">
         <h2 style="">Group1213 Survey</h2>
         <div id="Surveyquestions"></div>
@@ -118,7 +113,6 @@ mysqli_close($conn);
         });
 
     </script>
-</body>
 
 
 <?php include 'includes/footer.php'; ?>
