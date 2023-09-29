@@ -6,7 +6,6 @@ if (isset($_POST['submit'])) {
     $avgEnvironment = 0;
     $avgSkills = 0;
     $avgWellbeing = 0;
-
     $countProcess = 0;
     $countEnvironment = 0;
     $countSkills = 0;  

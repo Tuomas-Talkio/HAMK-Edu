@@ -3,7 +3,6 @@ include 'includes/header.php';
 
 // Connect to database
 include ('connect_to_loc_db.php');
-
 // Query to get 5 random questions
 $query1 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LP%' OR ID LIKE 'PR%' ORDER BY RAND() LIMIT 5;";
 $query2 = "SELECT ID, Statement, Best FROM learnwellquestions WHERE ID LIKE 'LE%' ORDER BY RAND() LIMIT 5;";
