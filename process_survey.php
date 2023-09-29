@@ -55,60 +55,13 @@ if (isset($_POST['submit'])) {
 
     //store the responses in a session var
     $_SESSION['survey_responses'] = [
-        'avgProcess' => $avgProcess,
-        'avgEnvironment' => $avgEnvironment,
-        'avgSkills' => $avgSkills,
-        'avgWellbeing' => $avgWellbeing,
+        'avgProcess' => 1,
+        'avgEnvironment' => 2,
+        'avgSkills' => 3,
+        'avgWellbeing' => 4,
     ];
 
-    // Connect to the database
-    include('connect_to_loc_db.php');
-
-    // Get the data from the form
-    $data = $_POST;
-
-    // Prepare the query
-    $query = "INSERT INTO data (";
-    $values = "VALUES (";
-    foreach ($data as $key => $value) {
-        if (!empty($value)) {
-            $query .= $key . ",";
-            $values .= "'" . $value . "',";
-        }
-    }
-    $query = rtrim($query, ",");
-    $values = rtrim($values, ",");
-    $query .= ") " . $values . ")";
-
-    // Execute the query
-    if (mysqli_query($conn, $query)) {
-        // Prepare the query to insert into results table
-        $results_query = "INSERT INTO results (process, enviroment, skills, wellbeing) VALUES ('$avgProcess', '$avgEnvironment', '$avgSkills', '$avgWellbeing')";
-
-        // Execute the results query
-        if (mysqli_query($conn, $results_query)) {
-            header("Location: results.php");
-        } else {
-            echo "Error: " . mysqli_error($conn);
-        }
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
-
-    // Close the connection
-    mysqli_close($conn);
-
-    exit;
-    } else {
-        // Handle the case where the form was not submitted
-    }
-    ?>
-
-            
-
-        // Close the connection
-        mysqli_close($conn);
-
+    header("Location: results.php");
     exit;
 }
 else {

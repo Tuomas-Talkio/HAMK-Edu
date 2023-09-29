@@ -1,11 +1,25 @@
 html{
     font-family: Arial, Helvetica, sans-serif;
 }
+body{
+    color: #444444 !important;
+}
+
+form h2, button {
+    margin-left: -10px !important;
+}
+
+form{
+    margin-left: 20px;
+}
 header, nav {
     background-color: cadetblue;
     color: #fff;
     text-align: center;
     padding: 10px;
+}
+.question-text{
+    color: #444444 !important;
 }
 
 nav ul {
