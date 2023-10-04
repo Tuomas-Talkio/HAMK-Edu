@@ -77,15 +77,16 @@ if ($wellbeing) {
 mysqli_close($conn);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<link href="style.css" rel="stylesheet" type="text/css">
 
-<body>
+<div class= 'contents'>
     <form id="Survey" action="process_survey.php" method="post">
-        <h2>Group1213 Survey</h2>
+        <div class= 'container'>
+            <h1>LearnWell Questionaire</h1>
+        </div>    
         <div id="Surveyquestions"></div>
-        <button  id="submitButton" type="submit" name = "submit">Submit</button>
+        <div class= 'container'>
+            <button  id="submitButton" type="submit" name = "submit">Submit</button>
+        </div>    
     </form>
 
     <script>
@@ -119,7 +120,7 @@ mysqli_close($conn);
 
 
     </script>
-</body>
+</div>
 
 
 <?php include 'includes/footer.php'; ?>
