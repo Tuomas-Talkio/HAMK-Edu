@@ -35,8 +35,8 @@ include 'includes/header.php'; ?>
     ?>
 
     <script src="speedometer.js"></script>
-    <section>
-        <h1>Results:</h1><br
+    <section class='main_section'>
+        <h1>Results:</h1><br>
         <?php
         include ('connect_to_loc_db.php');
         $result = mysqli_query($conn, "SHOW COLUMNS FROM results");
@@ -81,10 +81,10 @@ include 'includes/header.php'; ?>
                 if ($result1 && $result1->num_rows > 0) {
                     $row = $result1->fetch_assoc();
                     $response = $row['response'];
-                    echo "<p>$response</p>";
+                    echo "<p class='text ai_generated'>$response</p>";
                 }
                 
-                echo "<p>$customText[$columnName]</p>";
+                echo "<p class='text written'>$customText[$columnName]</p>";
             }
         }
         else {
