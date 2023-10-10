@@ -6,10 +6,10 @@ include 'includes/header.php'; ?>
     //retrieve answers from session variable
     if (isset($_SESSION['survey_responses'])) {
         $surveyResponses = $_SESSION['survey_responses'];
-        echo "Group 1 avg: " . $surveyResponses['avgProcess'] . "<br>";
-        echo "Gr 2 avg: " . $surveyResponses['avgEnvironment'] . "<br>";
-        echo "Gr 3 avg: " . $surveyResponses['avgSkills'] . "<br>";
-        echo "Gr 4 avg: " . $surveyResponses['avgWellbeing'] . "<br>";
+    //    echo "Group 1 avg: " . $surveyResponses['avgProcess'] . "<br>";
+    //    echo "Gr 2 avg: " . $surveyResponses['avgEnvironment'] . "<br>";
+    //    echo "Gr 3 avg: " . $surveyResponses['avgSkills'] . "<br>";
+    //    echo "Gr 4 avg: " . $surveyResponses['avgWellbeing'] . "<br>";
     } else {
         echo "No survey responses found.";
     }
@@ -36,7 +36,7 @@ include 'includes/header.php'; ?>
 
     <script src="speedometer.js"></script>
     <section>
-        <h2>Results</h2>
+        <h1>Results:</h1><br
         <?php
         include ('connect_to_loc_db.php');
         $result = mysqli_query($conn, "SHOW COLUMNS FROM results");
@@ -69,9 +69,9 @@ include 'includes/header.php'; ?>
             }
 
             foreach ($averages as $columnName => $averageValue) {
-                echo "<p>$columnName</p>";
+                echo "<h2>study $columnName </h2>";
                 $userValueCategory = "avg" . ucfirst($columnName);
-                echo "<p>" . $surveyResponses[$userValueCategory] . "</p>";
+
                 echo "<canvas id='$columnName' class='speedometer-canvas' data-result='$averageValue' data-user=" . $surveyResponses[$userValueCategory] . " width='300' height='300'></canvas>";
 
                 $advice = 'TEXTTEXT';
@@ -83,7 +83,6 @@ include 'includes/header.php'; ?>
                     $response = $row['response'];
                     echo "<p>$response</p>";
                 }
-                else{echo "<p>"; echo round($averageValue); echo round($surveyResponses[$userValueCategory]); echo $columnName; echo"</p>";}
                 
                 echo "<p>$customText[$columnName]</p>";
             }
