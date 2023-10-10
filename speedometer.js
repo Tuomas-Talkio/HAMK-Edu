@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let f = new FontFace("Poppins", "url(https://fonts.googleapis.com/css2?family=Poppins:wght@300)");
+
+    f.load().then((font) => {
+        // Font is loaded and ready to use
+        document.fonts.add(font);
+    }).catch((error) => {
+        console.error('Font loading failed:', error);
+    });
     // Function to map a value from the original range to the angle range
     function mapValueToAngle(value, minValue, maxValue, startAngle, endAngle) {
         return (
@@ -139,18 +147,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // Draw legend text
-        const minTextX = centerX - radius - 5;
+        const minTextX = centerX - radius + 5;
         const minTextY = centerY + 30;
         const maxTextX = centerX + radius - 5;
         const maxTextY = centerY + 30;
-        const currentTextX = centerX - 12;
+        const currentTextX = centerX;
         const currentTextY = centerY;
 
-        ctx.font = "30px Helvetica";
+        ctx.font = "30px Poppins";
+        ctx.textAlign = "center"
         ctx.fillStyle = "#000";
         ctx.fillText(`${minValue}`, minTextX, minTextY);
         ctx.fillText(`${maxValue}`, maxTextX, maxTextY);
-        ctx.font = "40px Helvetica";
+        ctx.font = "40px Poppins";
         ctx.fillText(`${userAverage}`, currentTextX, currentTextY);
 
         ctx.translate(0.5, 0.5);
