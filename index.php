@@ -86,7 +86,12 @@ mysqli_close($conn);
         <div id="Surveyquestions"></div>
         <div class= 'container'>
             <button  id="submitButton" type="submit" name = "submit">Submit</button>
-        </div>    
+        </div>
+        <div class="gdpr">
+            <p>Know about how we process your data</p>
+            <span class="tooltip">We don't collect any personal data. The data is used and processed solely by HAMK.</span>
+        </div>
+
     </form>
 
     <script>
