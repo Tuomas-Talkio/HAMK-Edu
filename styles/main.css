@@ -82,6 +82,51 @@
 
   }
 
+  .gdpr{
+    text-align: center;
+    border-bottom: 1px dotted black;
+    position: relative;
+    display: inline-block;
+  }
+
+  .gdpr .tooltip {
+    visibility: hidden;
+    width: 300px;
+    background-color: #262626;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -130px;
+
+    position: absolute;
+    z-index: 1;
+  }
+
+  .gdpr:hover .tooltip {
+    visibility: visible;
+  }
+
+  .gdpr .tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+
+  .gdpr p{
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+
   .social-icons{
     margin-top: 30px;
   }

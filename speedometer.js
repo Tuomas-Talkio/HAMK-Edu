@@ -153,6 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const maxTextY = centerY + 30;
         const currentTextX = centerX;
         const currentTextY = centerY;
+        const groupTextX = centerX + (radius + 30) * Math.cos(groupAngle);
+        const groupTextY = centerY + (radius + 30) * Math.sin(groupAngle);
 
         ctx.font = "30px Poppins";
         ctx.textAlign = "center"
@@ -162,6 +164,14 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.font = "40px Poppins";
         ctx.fillText(`${userAverage}`, currentTextX, currentTextY);
 
+        ctx.save();
+        ctx.translate(groupTextX, groupTextY);
+        ctx.rotate(groupAngle + Math.PI / 2);
+        ctx.font = "18px Poppins";
+
+        ctx.fillText('Group', 0, 0);
+
+        ctx.restore();
         ctx.translate(0.5, 0.5);
     }
 
